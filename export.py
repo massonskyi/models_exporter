@@ -37,7 +37,7 @@ class Export:
         self.model = YOLO(self._model_path)
         self.working_dir = _working_dir
 
-    def export(self, export_type: str, opset: int = 12, imgsz: Union[int, tuple] = (416, 416),
+    def export(self, export_type: str, opset: int = 12, imgsz: Union[int, tuple] = (640, 640),
         half: bool = False, int8:bool = False) \
             -> bool:
         if export_type == "onnx":
@@ -61,7 +61,7 @@ class Export:
         return self.model.export(format="onnx", opset=_opset)
 
     def _export_tflite(self, _opset: int = 12,
-        imgsz: Union[int, tuple] = (416, 416), half: bool = False, int8:bool = False) \
+        imgsz: Union[int, tuple] = (640, 640), half: bool = False, int8:bool = False) \
             -> bool:
         return self.model.export(format="tflite", opset=_opset, imgsz=imgsz, half=half, int8=int8)
 
